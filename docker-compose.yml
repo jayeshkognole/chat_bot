@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  frontend:
+    build: ./ui-server
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+  backend:
+    build: ./api-server
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=app.py

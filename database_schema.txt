@@ -1,0 +1,51 @@
+Database Schema: chatbot.db
+
+Tables:
+
+user
+|-------------------|-------------------|
+| Column            | Type              |
+|-------------------|-------------------|
+| id                | INTEGER PRIMARY KEY AUTOINCREMENT |
+| username          | TEXT UNIQUE NOT NULL |
+| password          | TEXT NOT NULL       |
+|-------------------|-------------------|
+
+chat_tab
+|-------------------|-------------------|
+| Column            | Type              |
+|-------------------|-------------------|
+| id                | INTEGER PRIMARY KEY AUTOINCREMENT |
+| user_id           | INTEGER NOT NULL    |
+| tab_name          | TEXT NOT NULL       |
+|-------------------|-------------------|
+| FOREIGN KEY (user_id) REFERENCES user (id) |
+|-------------------|-------------------|
+
+message
+|-------------------|-------------------|
+| Column            | Type              |
+|-------------------|-------------------|
+| id                | INTEGER PRIMARY KEY AUTOINCREMENT |
+| user_id           | INTEGER NOT NULL    |
+| chat_tab_id       | INTEGER NOT NULL    |
+| user_message      | TEXT NOT NULL       |
+| ai_response       | TEXT NOT NULL       |
+| refrence          | TEXT                |
+| timestamp         | DATETIME DEFAULT CURRENT_TIMESTAMP |
+|-------------------|-------------------|
+| FOREIGN KEY (user_id) REFERENCES user (id) |
+| FOREIGN KEY (chat_tab_id) REFERENCES chat_tab (id) |
+|-------------------|-------------------|
+
+file
+|-------------------|-------------------|
+| Column            | Type              |
+|-------------------|-------------------|
+| id                | INTEGER PRIMARY KEY AUTOINCREMENT |
+| user_id           | INTEGER NOT NULL    |
+| filename          | TEXT NOT NULL       |
+| filepath          | TEXT NOT NULL       |
+|-------------------|-------------------|
+| FOREIGN KEY (user_id) REFERENCES user (id) |
+|-------------------|-------------------|

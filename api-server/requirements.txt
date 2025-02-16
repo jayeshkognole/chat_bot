@@ -1,0 +1,12 @@
+Flask
+Flask-SQLAlchemy
+PyMuPDF 
+langchain
+faiss-cpu
+google-generativeai
+tiktoken
+werkzeug
+langchain-community
+flask_cors
+langchain_google_genai
+numpy
